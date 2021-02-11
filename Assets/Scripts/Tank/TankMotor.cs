@@ -48,4 +48,18 @@ public class TankMotor : MonoBehaviour
         //Now, rotate our tank by this value - we want to rotate in our local space (not in world space)
         transform.Rotate(rotateVector, Space.Self);
     }
+
+    public bool RotateTowards(Vector3 target, float rotateSpeed)
+    {
+        Vector3 vectorToTarget = target - transform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(vectorToTarget);
+
+        if(targetRotation == transform.rotation)
+        {
+            return false;
+        }
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+
+        return true;
+    }
 }
