@@ -14,10 +14,13 @@ public class SampleAIController1 : MonoBehaviour
     public GameObject[] waypoints;
     //We need a way to keep track of the current waypoint 
     private int currentWaypoint = 1;
-    
+
     private TankData data;
     private TankMotor motor;
     private TankShooter shooter;
+
+    public enum LoopType { Stop, Loop, PingBong };
+    public LoopType loopType = LoopType.Stop;
 
     public float closeEnough = 1f;
 
@@ -44,9 +47,29 @@ public class SampleAIController1 : MonoBehaviour
             motor.Move(data.moveSpeed);
         }
         //If we've arrived at our waypoint, then go to the next one
-        if(Vector3.SqrMagnitude(transform.position - waypoints[currentWaypoint].transform.position) <= (closeEnough * closeEnough))
+        if (loopType == LoopType.Stop)
         {
-            currentWaypoint++;
+            if (Vector3.SqrMagnitude(transform.position - waypoints[currentWaypoint].transform.position) <= (closeEnough * closeEnough))
+            {
+                if (currentWaypoint < (waypoints.Length - 1))
+                {
+                    currentWaypoint++;
+                }
+            }
+        }
+        else if (loopType == LoopType.Loop)
+        {
+            if (Vector3.SqrMagnitude(transform.position - waypoints[currentWaypoint].transform.position) <= (closeEnough * closeEnough))
+            {
+                if (currentWaypoint < (waypoints.Length - 1))
+                {
+                    currentWaypoint++;
+                }
+                else
+                {
+                    currentWaypoint = 0;
+                }
+            }
         }
     }
 }

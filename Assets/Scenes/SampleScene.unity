@@ -238,7 +238,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -732,7 +732,7 @@ PrefabInstance:
     - target: {fileID: 5447709897672153086, guid: bf25acb5bed701242ab2b539bc8a6314,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.25700003
+      value: 0.241
       objectReference: {fileID: 0}
     - target: {fileID: 5447709897672153086, guid: bf25acb5bed701242ab2b539bc8a6314,
         type: 3}
@@ -799,5 +799,10 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[2]
       value: 
       objectReference: {fileID: 2045947929}
+    - target: {fileID: 332708765522425028, guid: bf25acb5bed701242ab2b539bc8a6314,
+        type: 3}
+      propertyPath: loopType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf25acb5bed701242ab2b539bc8a6314, type: 3}
